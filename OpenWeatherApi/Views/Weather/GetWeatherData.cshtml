@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "GetWeatherData";
+}
+
+<h2>GetWeatherData</h2>
+
+<p id="name"></p>
+<p id="temp"></p>
+<p id="humidity"></p>
+<button>Get Weather</button>
+
+<script>
+    $(document).ready(function () {
+
+ 
+    $("button").click(function () {
+
+        $.get("@Url.Action("GetWeather", "Weather")", function (response) {
+
+            
+            $("name").text(response.name);
+            $("temp").text(response.temp);
+            $("humidity").text(response.humidity);
+
+        });
+
+    });
+
+
+    });
+
+</script>
+
+

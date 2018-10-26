@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "GetWeatherData";
+}
+
+<h2>GetWeatherData</h2>
+ 
+<p id="name"></p>
+<p id="temp"></p>
+<p id="humidity"></p>
+
+<input type="text" id="search" name="search" />
+<button id="button">Get Weather</button>
+<script>
+    $(document).ready(function () {
+       // var we = Object();
+
+   $("button").click(function () {
+
+        $.get("@Url.Action("GetWeatherData", "Weather")", function (response) {
+            //response
+            console.log(response);
+           // we = ko.mapping.fromJS(response);
+          //  ko = applyBindings(we);
+
+          $("name").text(response.name);
+           $("temp").text(response.temp);
+           $("humidity").text(response.humidity);
+
+        });
+
+    });
+
+
+     });
+
+</script>
+
+
+
+
+
+@*@{
+    ViewBag.Title = "GetWeatherData";
+}
+
+<h2>GetWeatherData</h2>
+
+
+<div class="col-md-12">
+    <h2>current condtion is <span data-bind="text:name"></span></h2>
+
+</div>
+<div class="col-md-12">
+    ctemp is <span data-bind="text:main.temp"></span>&deg;f
+
+</div>
+
+
+//<button>Get Weather</button>
+<script>
+    $(document).ready(function () {
+        var we = Object();
+
+ //   $("button").click(function () {
+
+        $.get("@Url.Action("GetWeatherData", "Weather")", function (response) {
+            //response
+            console.log(response);
+            we = ko.mapping.fromJS(response);
+            ko = applyBindings(we);
+
+         //   $("name").text(response.name);
+           // $("temp").text(response.temp);
+            //$("humidity").text(response.humidity);
+
+        });
+
+    });
+
+
+//    });
+
+</script>*@
+
+
